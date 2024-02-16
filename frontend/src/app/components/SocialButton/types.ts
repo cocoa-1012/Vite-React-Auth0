@@ -1,4 +1,5 @@
 export type InputProps = {
-    link: string;
-    src?: string;
+  link?: string,
+  src?: string,
+  onClick?: () => void,
 }

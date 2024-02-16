@@ -1,15 +1,16 @@
-import { createContext, useState, useContext, ReactNode } from 'react';
-import overallTheme, { Theme, darkTheme } from './Theme';
+import { createContext, useState, useContext, ReactNode } from 'react'
 
-type ThemeString = 'light' | 'dark';
+import overallTheme, { Theme, darkTheme } from './Theme'
+
+type ThemeString = 'light' | 'dark'
 
 interface ProviderProps {
   children: ReactNode
 }
 
 interface ThemeContextProps {
-  theme: ThemeString;
-  setTheme: React.Dispatch<React.SetStateAction<ThemeString>>;
+  theme: ThemeString
+  setTheme: React.Dispatch<React.SetStateAction<ThemeString>>
   dataConnected: boolean,
   setDataConnected: React.Dispatch<React.SetStateAction<boolean>>,
   currentTheme: Theme
@@ -21,20 +22,20 @@ const ThemeContext = createContext<ThemeContextProps>({
   dataConnected: false,
   setDataConnected: () => {},
   currentTheme: darkTheme
-});
+})
 
-export const useTheme = () => useContext(ThemeContext);
+export const useTheme = () => useContext(ThemeContext)
 
 export const ThemeProvider: React.FC<ProviderProps> = ({ children }) => {
-  const [theme, setTheme] = useState<ThemeString>('dark');
-  const [dataConnected, setDataConnected] = useState<boolean>(false);
-  const currentTheme = overallTheme[theme];
+  const [theme, setTheme] = useState<ThemeString>('dark')
+  const [dataConnected, setDataConnected] = useState<boolean>(false)
+  const currentTheme = overallTheme[theme]
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme, currentTheme, dataConnected, setDataConnected}}>
       {children}
     </ThemeContext.Provider>
-  );
-};
+  )
+}
 
-export default ThemeContext;
+export default ThemeContext

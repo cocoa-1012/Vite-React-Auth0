@@ -1,9 +1,10 @@
-import { Typography } from '@mui/material';
-import { useTheme } from '../../themes/ThemeProvider';
+import { Typography } from '@mui/material'
+import { useTheme } from '../../themes/ThemeProvider'
 
-const StyledTitle = ( props:any ) => {
-  const { textAlign } = props;
-  const { currentTheme } = useTheme();
+import { Props } from './types'
+
+const StyledTitle = ( { children, textAlign, }:Props ) => {
+  const { currentTheme } = useTheme()
 
   return (
     <Typography 
@@ -15,9 +16,9 @@ const StyledTitle = ( props:any ) => {
         fontFamily: "sans-serif"
       }}
     >
-      {props.children}
+      {children}
     </Typography>
-  );
-};
+  )
+}
 
 export default StyledTitle;

@@ -1,0 +1,32 @@
+# This is an example Starter pipeline configuration
+# Use a skeleton to build, test and deploy using manual and parallel steps
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+
+image: node:20.11.0-alpine3.18
+options:
+  docker: true
+pipelines:
+  default:
+     - step:
+         name: 'Install dependencies'
+         caches: 
+           - node
+         script: 
+         - yarn install
+     - step:
+         name: 'Build distribution'
+         caches: 
+           - node
+         script: 
+         - yarn build
+     - step:
+         name: 'Build Docker image'
+         caches: 
+           - node
+         script: 
+           - docker build -t test -f Dockerfile
+           - docker save --output tmp-image.docker test
+         artifacts: 
+           - tmp-image.docker
+       

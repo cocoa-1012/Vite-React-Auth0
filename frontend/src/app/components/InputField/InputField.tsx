@@ -1,7 +1,9 @@
-import { useState } from "react";
-import EyeImg from "../../assets/images/eye.png";
-import EyeClosedImg from "../../assets/images/eye-closed.png";
-import { InputProps } from "./types";
+import { useState } from 'react'
+
+import { InputProps } from './types'
+
+import EyeImg from '../../assets/images/eye.png'
+import EyeClosedImg from '../../assets/images/eye-closed.png'
 
 function InputField({
   label,
@@ -11,16 +13,17 @@ function InputField({
   onValueChange,
   name,
 }: InputProps) {
-  const [visiblePwd, setVisiblePwd] = useState(false);
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false)
+
   return (
-    <div className=" w-full pt-3 pb-6">
-      <p className="font-semibold font-poppins text-[16px] text-white3 text-left mb-2">
+    <div className=' w-full pt-0 pb-6'>
+      <p className='font-semibold font-poppins text-[16px] text-white3 text-left mb-2'>
         {label}
       </p>
-      <div className=" relative flex">
+      <div className=' relative flex'>
         <input
-          className="w-full bg-input text-white3 p-3 rounded-xl border border-border outline-none"
-          type={password && !visiblePwd ? "password" : "text"}
+          className='w-full bg-input text-white3 p-3 rounded-xl border border-border outline-none'
+          type={password && !isPasswordVisible ? 'password' : 'text'}
           value={value}
           name={name}
           placeholder={placeholder}
@@ -28,15 +31,15 @@ function InputField({
         />
         {password && (
           <img
-            src={visiblePwd ? EyeClosedImg : EyeImg}
-            alt="ShowPwd"
-            className=" absolute right-4 top-4 cursor-pointer"
-            onClick={() => setVisiblePwd(!visiblePwd)}
+            src={isPasswordVisible ? EyeClosedImg : EyeImg}
+            alt='ShowPwd'
+            className=' absolute right-4 top-4 cursor-pointer'
+            onClick={() => setIsPasswordVisible(!isPasswordVisible)}
           />
         )}
       </div>
     </div>
-  );
+  )
 }
 
-export default InputField;
+export default InputField

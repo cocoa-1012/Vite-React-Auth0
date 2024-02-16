@@ -1,9 +1,14 @@
-import { Typography } from '@mui/material';
-import { useTheme } from '../../themes/ThemeProvider';
+import { Typography } from '@mui/material'
+import { useTheme } from '../../themes/ThemeProvider'
 
-const StyledText = (props:any) => {
-  const { children, textAlign, secondaryText } = props;
-  const { currentTheme } = useTheme();
+import { Props } from './types'
+
+const StyledText = ({ 
+  children, 
+  textAlign, 
+  secondaryText
+}:Props) => {
+  const { currentTheme } = useTheme()
 
   return (
     <Typography 
@@ -12,12 +17,11 @@ const StyledText = (props:any) => {
         color: secondaryText ? currentTheme.onSecondary: currentTheme.onSurface,
         flexGrow: 1,
         textAlign: textAlign,
-        // fontFamily: "sans-serif"
       }}
     >
       {children}
     </Typography>
-  );
+  )
 };
 
 export default StyledText;
