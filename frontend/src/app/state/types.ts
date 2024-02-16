@@ -1,5 +1,7 @@
-import { SessionState } from './slices/session/types'
+import { GameSetupState } from "./slices/gameSetup";
+import { SessionState } from "./slices/session/types";
 
 export type RootState = {
-  session: SessionState,
-}
+  session: SessionState;
+  gameSetup: GameSetupState;
+};
