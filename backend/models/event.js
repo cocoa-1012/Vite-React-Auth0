@@ -5,7 +5,6 @@ const gameItem = new mongoose.Schema({
   gameId: { type: mongoose.Types.ObjectId, required: true },
   yesVote: [{ type: mongoose.Types.ObjectId }],
   noVote: [{ type: mongoose.Types.ObjectId }]
-
 });
 
 const EventSchema = new Schema({

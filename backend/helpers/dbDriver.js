@@ -12,7 +12,6 @@ main = async () => {
     try {
         let db = await mongoose.connect(process.env.DB_URL);
         return db;
-     
     }
     catch (err) {
         console.log(err);
