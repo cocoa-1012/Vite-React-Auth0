@@ -44,7 +44,7 @@ function AuthContextProvider({ children }: Props) {
           if (error) { 
             return reject(error) 
           }
-          
+          console.log('auth0 login result:', result)
           resolve(result) 
         }) 
     }) 

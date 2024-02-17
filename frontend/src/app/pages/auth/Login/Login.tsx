@@ -13,11 +13,13 @@ import SocialLinks from '../../../components/SocialLoginLinks/SocialLoginLinks'
 import useHandleFormApiErrors from '../../../hooks/useHandleFormApiErrors'
 
 import { useAuth } from '../../../contexts/AuthContext/AuthContextProvider'
+import useSession from '../../../hooks/useSession'
 
 import { FormValues } from './types'
 
 
 function LoginPage() {
+  const session = useSession()
   const handleFormApiErrors = useHandleFormApiErrors()
   const {
     loginWithEmailPassword,
@@ -41,6 +43,13 @@ function LoginPage() {
     
     try {
       await loginWithEmailPassword(values.email, values.password)
+      // TODO: implement API call for POST /userinfo that will do following
+      // 1. After successful login, find user from MongoDB user collection using email
+      // 2. If user exists with this email, update lastLogin, API will return status code = 200
+      // 3. If user doesn't exist already, this is new user API will return status code = 201
+      // 4. if status code = 201, setSession({ ...session, isNewUser: true })
+      // 5. if status code = 200, do nothing
+      // 6. from gameSetup screens, use session.isNewUser to branch off logic
     } catch (error: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
       handleFormApiErrors({
         error: error.error_description,

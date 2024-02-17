@@ -30,6 +30,7 @@ function AuthSuccessRedirect({ children
 
       if (authResult.accessToken) {
         const user: any = await getUser(authResult.accessToken) // eslint-disable-line @typescript-eslint/no-explicit-any
+        console.log('user: ', user)
         dispatch(setSession({
           ...authResult,
           user,
