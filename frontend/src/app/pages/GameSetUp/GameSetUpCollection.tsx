@@ -182,7 +182,7 @@ function GameSetUpCollectionPage({
         </div>
         <CustomTable
           data={gameList}
-          isEdit
+          isEdit={false}
           selectedPeople={selectedPeople}
           setSelectedPeople={setSelectedPeople}
         />
