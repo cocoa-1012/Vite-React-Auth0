@@ -10,13 +10,13 @@ import useCurrentValue from "../../hooks/useCurrentValue";
 import { GameSetUpProps } from "./types";
 
 type DataType = {
-  id: number;
-  game: string;
-  release: number;
-  playerCount: string;
-  playTime: number;
-  weight: number;
-  rating: number;
+  id: number,
+  game: string,
+  release: number,
+  playerCount: string,
+  playTime: number,
+  weight: number,
+  rating: number,
 };
 
 const gameList: Array<DataType> = [
@@ -166,14 +166,6 @@ function GameSetUpCollectionPage({
     <div className="w-full mx-auto flex flex-col gap-4 items-center">
       <Description text="Add your collection to the game night" />
       <SubTitle text="Import from other profiles to your collection" />
-      <UploadField
-        label="Upload from BGA profiles"
-        placeholder="Enter a BGA-Username here..."
-        value={currentValue?.bgaProfile || ""}
-        onValueChange={(e: any) => {
-          setCurrentValue({ bgaProfile: e.target.value });
-        }}
-      />
       <UploadField
         label="Upload from boardgamegeek.com"
         placeholder="Enter your BGG-Username here..."
