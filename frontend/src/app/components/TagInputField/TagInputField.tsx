@@ -2,17 +2,27 @@ import { useState } from 'react'
 
 import { TagInputProps } from './types'
 
-function TagInputField({ label, placeholder, onValueChange }: TagInputProps) {
+function TagInputField({ label, placeholder, onValueChange, setValidation }: TagInputProps) {
   const [inputVal, setInputVal] = useState('')
 
   const addEvent = () => {
-    onValueChange(inputVal)
-    setInputVal('')
+    if (validateEmail(inputVal)) {
+      setValidation('')
+      onValueChange(inputVal)
+      setInputVal('')
+    } else {
+      setValidation('Invalid Email')
+    }
   }
   const handleKeyDown = (e: any) => {
     if ((e.keyCode === 13 || e.keyCode === 32) && !!inputVal) {
       if (inputVal) addEvent()
     }
+  }
+  
+  const validateEmail= (email: string) => {
+    var regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return regex.test(String(email).toLowerCase())
   }
 
   return (
