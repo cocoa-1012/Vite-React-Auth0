@@ -5,6 +5,28 @@
 @tailwind components;
 @tailwind utilities;
 
-*::-webkit-scrollbar {
-  display: none;
+.scrollbar-custom ::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  color: blue;
+  border-radius: 5px;
 }
+
+.scrollbar-custom ::-webkit-scrollbar-track {
+  background: #1B2132;
+  border-radius: 5px;
+  margin: 10px;
+  margin-top: 70px;
+}
+
+.scrollbar-custom ::-webkit-scrollbar-thumb {
+  background: #5A5F6B;
+  border-radius: 5px;
+}
+
+.scrollbar-custom ::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.scrollbar-custom ::-webkit-scrollbar-corner {
+  background: #282E3E;
